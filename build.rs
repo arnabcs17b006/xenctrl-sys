@@ -14,9 +14,15 @@ fn main() {
         .header(XEN_HEADERS_WRAPPER)
         // Generate bindings for Xen specific types
         // and functions only.
-        // .whitelist_function("xc_.*")
+        .whitelist_function("xc_.*")
+        // Generate bindings for Xen specific constants.
+        .whitelist_var("XC_.*")
         // Keep C's enums as Rust's enums.
-        // .default_enum_style(bindgen::EnumVariation::Rust { non_exhaustive: false })
+        .default_enum_style(bindgen::EnumVariation::Rust)
+        // Disable data layout tests.
+        .layout_tests(false)
+        // Don't run rustfmt on the bindings
+        .rustfmt_bindings(false)
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.
@@ -24,8 +30,7 @@ fn main() {
 
     // Write the bindings to the $OUT_DIR/bindings.rs file.
     let out_path = {
-        let out_path =
-            env::var("OUT_DIR").expect("Unable to get OUT_DIR environment variable");
+        let out_path = env::var("OUT_DIR").expect("Unable to get OUT_DIR environment variable");
         PathBuf::from(out_path)
     };
     bindings
