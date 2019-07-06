@@ -21,8 +21,8 @@ fn main() {
         .default_enum_style(bindgen::EnumVariation::Rust)
         // Disable data layout tests.
         .layout_tests(false)
-        // Don't run rustfmt on the bindings
-        .rustfmt_bindings(false)
+        // Run rustfmt on the bindings
+        .rustfmt_bindings(true)
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.
