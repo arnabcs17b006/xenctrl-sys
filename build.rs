@@ -12,11 +12,6 @@ fn main() {
         // The input header we would like to generate
         // bindings for.
         .header(XEN_HEADERS_WRAPPER)
-        // Generate bindings for Xen specific types
-        // and functions only.
-        .whitelist_function("xc_.*")
-        // Generate bindings for Xen specific constants.
-        .whitelist_var("XC_.*")
         // Keep C's enums as Rust's enums.
         .default_enum_style(bindgen::EnumVariation::Rust)
         // Disable data layout tests.
