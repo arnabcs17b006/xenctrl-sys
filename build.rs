@@ -13,11 +13,15 @@ fn main() {
         // bindings for.
         .header(XEN_HEADERS_WRAPPER)
         // Keep C's enums as Rust's enums.
-        .default_enum_style(bindgen::EnumVariation::Rust{ non_exhaustive: false })
+        .default_enum_style(bindgen::EnumVariation::Rust {
+            non_exhaustive: false,
+        })
         // Disable data layout tests.
         .layout_tests(false)
         // Run rustfmt on the bindings
         .rustfmt_bindings(true)
+        //initialize structs with default values
+        .derive_default(true)
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.
