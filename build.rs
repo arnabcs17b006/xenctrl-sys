@@ -13,7 +13,9 @@ fn main() {
         // bindings for.
         .header(XEN_HEADERS_WRAPPER)
         // Keep C's enums as Rust's enums.
-        .default_enum_style(bindgen::EnumVariation::Rust{ non_exhaustive: false })
+        .default_enum_style(bindgen::EnumVariation::Rust {
+            non_exhaustive: false,
+        })
         // Disable data layout tests.
         .layout_tests(false)
         // Run rustfmt on the bindings
